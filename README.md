@@ -1,4 +1,4 @@
-# Sample Flask App
+# PBL Application
 
 ## 実行方法
 
