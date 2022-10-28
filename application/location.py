@@ -6,8 +6,10 @@ def get_teacher_locations(db):
 def get_teacher_location_states(db,teacher_id):
 	pass
 
+#教員の場所の状態を登録
 def register_location_state(db,teacher_id, location_name):
 	pass
 
+#教員の場所の更新
 def update_teacher_location(db,teacher_id, location_id):
 	pass
