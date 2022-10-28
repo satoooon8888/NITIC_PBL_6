@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="utf-8">
+    <title>ログインページ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="form-wrapper">
+    <h1>Sign in</h1>
+    <form action="/signIn" mehod="post">
+        <div class="form-item">
+            <label for="mail"></label>
+            <input type="mail" name="mail" required="required" placeholder="mail" id="mail">
+        </div>
+        <div class="form-item">
+            <label for="password"></label>
+            <input type="password" name="password" required="required" placeholder="Password" id="password">
+        </div>
+        <div class="button-panel">
+            <input type="submit" class="button" title="Sign In" value="Sign In">
+        </div>
+    </form>
+    <div class="form-footer">
+        <p><a href="signUp.html">アカウントを作成する</a></p>
+    </div>
+</div>
+</body>
+</html>

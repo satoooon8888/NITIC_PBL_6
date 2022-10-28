@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Title</title>
+  <meta charset="utf-8">
+  <title>ホームページ</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-	Hello world
+<header id="header">
+  <h1>教員監視システム</h1>
+  <nav>
+    <ul>
+      <li><a href="signUp.html">アカウント作成</a></li>
+      <li><a href="signIn.html">ログイン</a></li>
+    </ul>
+  </nav>
+</header>
+{% if is_logged %}
+<div class="form-wrapper">
+  <h1>状態の入力</h1>
+  <form>
+    <div class="form-item">
+      <label for="password"></label>
+      <input type="password" name="password" required="required" placeholder="テキスト" id="password">
+    </div>
+    <div class="button-panel">
+      <input type="submit" class="button" title="Sign Up" value="register" onclick="location.href='teacher.html'">
+    </div>
+  </form>
+  <div class="form-footer">
+    <p><a href="#">ここはどこ?</a></p>
+  </div>
+</div>
+{% endif %}
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+
 </body>
 </html>
