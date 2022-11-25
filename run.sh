@@ -1,5 +1,5 @@
 #!/bin/bash -ex
 
-sqlite3 db/todo.db < sql/init.sql
+flask createdb
 
-python3 server.py
+flask run
