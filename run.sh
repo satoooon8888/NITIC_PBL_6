@@ -2,4 +2,4 @@
 
 flask createdb
 
-flask run
+flask --debug run
