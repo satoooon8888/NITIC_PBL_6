@@ -1,7 +1,7 @@
-from flask import Flask, redirect, url_for, flash, render_template, jsonify
+from flask import Flask, redirect, url_for, flash, render_template, jsonify, request
 from flask_login import login_required, logout_user, current_user
 from .config import Config
-from .models import db, login_manager, get_teachers
+from .models import db, login_manager, get_teachers, update_teacher_location
 from .oauth import blueprint
 from .cli import create_db
 
@@ -38,9 +38,9 @@ def handle_teacher():
         })
     return jsonify(teacher_dicts)
 
-@app.route("/api/teacher/location")
+@app.route("/api/teacher/location", methods=["POST"])
 @login_required
 def update_location():
-    update_teacher_location(current_user, request.form.location)
+    update_teacher_location(current_user, request.form["location"])
     return "ok"
 
