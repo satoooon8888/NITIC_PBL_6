@@ -26,3 +26,11 @@ login_manager.login_view = "google.login"
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+def get_teachers():
+    return User.query.all()
+
+def update_teacher_location(teacher, location_name):
+    teacher.location = location_name
+    db.session.commit()
+    
