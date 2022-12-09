@@ -1,7 +1,7 @@
-from flask import Flask, redirect, url_for, flash, render_template
-from flask_login import login_required, logout_user
+from flask import Flask, redirect, url_for, flash, render_template, jsonify
+from flask_login import login_required, logout_user, current_user
 from .config import Config
-from .models import db, login_manager
+from .models import db, login_manager, get_teachers
 from .oauth import blueprint
 from .cli import create_db
 
@@ -25,3 +25,22 @@ def logout():
 @app.route("/")
 def index():
     return render_template("home.html")
+
+@app.route("/api/teacher")
+def handle_teacher():
+    teachers = get_teachers()
+    teacher_dicts = []
+    for teacher in teachers:
+        teacher_dicts.append({
+            "id": teacher.id, 
+            "email": teacher.email, 
+            "location": teacher.location
+        })
+    return jsonify(teacher_dicts)
+
+@app.route("/api/teacher/location")
+@login_required
+def update_location():
+    update_teacher_location(current_user, request.form.location)
+    return "ok"
+
