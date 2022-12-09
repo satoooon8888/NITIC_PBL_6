@@ -9,6 +9,7 @@ db = SQLAlchemy()
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(256), unique=True)
+    location = db.Column(db.String(100))
 
 
 class OAuth(OAuthConsumerMixin, db.Model):
