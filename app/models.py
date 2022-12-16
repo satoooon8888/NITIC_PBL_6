@@ -12,7 +12,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(256), unique=True)
     location_id = db.Column(db.Integer,db.ForeignKey('location.id'))
 
-class Location(db.Module):
+class Location(db.Model):
     __tablename__ = 'location'
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     location = db.Column(db.String(100))
