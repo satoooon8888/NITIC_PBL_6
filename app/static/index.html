@@ -1,7 +1,98 @@
 <!DOCTYPE html>
+<html>
 <head>
-    <title>Title</title>
+  <meta charset="utf-8">
+  <title>ホームページ</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <script>
+    fetch('/api/teacher')
+    .then((response) => {
+    //ステータスが ok であればレスポンスを JSON として解析
+    if(response.ok) {
+      return response.json();
+    } else {
+      //ステータスが ok でなければエラーにする
+      throw new Error(`リクエスト失敗:${response.status} ${response.statusText}`);
+    }
+    })
+    .then((users) => {
+      //出力する HTML 文字列を入れる変数
+      let html = '';
+      //ユーザーごとの JSON データを処理（users は JSON の配列）
+      users.forEach(user => {
+        //ユーザーごとの div 要素の HTML
+        const userDiv =
+          `<div class="user">
+            <h3 class="mail">${user.mail}</h3>
+          </div>`;
+        //ユーザーごとの div 要素の HTML を変数 html に追加
+        html += userDiv;
+      });
+      //出力先の要素を取得
+      const container = document.querySelector('#teacher_location');
+      //出力先の要素に作成した html を挿入
+      container.innerHTML = html;
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  </script>
 </head>
 <body>
-  Index Page
+<header id="header">
+  <h1>教員所在地共有システム</h1>
+</header>
+{% if is_logged %}
+<div class="form-wrapper">
+  <h1>状態の入力</h1>
+  <form>
+    <group class="inline-radio">
+      <div><input type="radio" name="title"><label>状態1</label></div>
+      <div><input type="radio" name="title"><label>状態2</label></div>
+      <div><input type="radio" name="title"><label>状態3</label></div>
+      <div><input type="radio" name="title"><label>状態4</label></div>
+      <div><input type="radio" name="title"><label>状態5</label></div>
+    </group>
+    <div class="button-panel">
+      <input type="submit" class="button" title="Sign Up" value="register" onclick="location.href='teacher.html'">
+    </div>
+  </form>
+</div>
+{% endif %}
+<div id="teacher_location"></div>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+<section>
+  <h3>〇〇先生</h3>
+  <div>□□□□□□□</div>
+</section>
+
 </body>
+</html>
