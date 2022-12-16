@@ -41,4 +41,4 @@ def update_teacher_location(teacher, location_name):
     db.session.commit()
     
 def get_teacher_locations(teacher):
-    pass
+    return Location.query.filter(Location.user_id == teacher.id).all()
