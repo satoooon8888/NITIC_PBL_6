@@ -1,5 +1,4 @@
-# gitに追跡させないファイルを記述
-venv/
-db/
-__pycache__/
-.DS_Store
+*.pyc
+.env
+venv
+app.sqlite3
