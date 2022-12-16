@@ -20,7 +20,7 @@ class Location(db.Module):
 class OAuth(OAuthConsumerMixin, db.Model):
     __tablename__ = 'oauth'
     provider_user_id = db.Column(db.String(256), unique=True, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship(User)
 
 
