@@ -167,3 +167,22 @@ input:checked + label {
     font-weight: 500;
     color: #fff;
 }
+
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li a{
+    display: block;
+    text-decoration: none;
+    color: #666;
+    padding:10px;
+    transition:all 0.3s;
+}
+
+nav ul li.current a,
+nav ul li a:hover{
+    color:#fff;
+}

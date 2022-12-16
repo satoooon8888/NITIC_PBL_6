@@ -24,7 +24,7 @@
         //ユーザーごとの div 要素の HTML
         const userDiv =
           `<div class="user">
-            <h3 class="mail">${user.mail}</h3>
+            <h3 class="email">${user.email}</h3>
           </div>`;
         //ユーザーごとの div 要素の HTML を変数 html に追加
         html += userDiv;
@@ -42,8 +42,12 @@
 <body>
 <header id="header">
   <h1>教員所在地共有システム</h1>
+  <nav>
+    <ul>
+      <li><a href="/login/google">ログイン</a></li>
+    </ul>
+  </nav>
 </header>
-{% if is_logged %}
 <div class="form-wrapper">
   <h1>状態の入力</h1>
   <form>
@@ -59,40 +63,7 @@
     </div>
   </form>
 </div>
-{% endif %}
 <div id="teacher_location"></div>
-<section>
-  <h3>〇〇先生</h3>
-  <div>□□□□□□□</div>
-</section>
-<section>
-  <h3>〇〇先生</h3>
-  <div>□□□□□□□</div>
-</section>
-<section>
-  <h3>〇〇先生</h3>
-  <div>□□□□□□□</div>
-</section>
-<section>
-  <h3>〇〇先生</h3>
-  <div>□□□□□□□</div>
-</section>
-<section>
-  <h3>〇〇先生</h3>
-  <div>□□□□□□□</div>
-</section>
-<section>
-  <h3>〇〇先生</h3>
-  <div>□□□□□□□</div>
-</section>
-<section>
-  <h3>〇〇先生</h3>
-  <div>□□□□□□□</div>
-</section>
-<section>
-  <h3>〇〇先生</h3>
-  <div>□□□□□□□</div>
-</section>
 
 </body>
 </html>
