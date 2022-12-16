@@ -7,12 +7,18 @@ db = SQLAlchemy()
 
 
 class User(UserMixin, db.Model):
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(256), unique=True)
+    location_id = db.Column(db.Integer,db.ForeignKey('location.id'))
+
+class Location(db.Module):
+    __tablename__ = 'location'
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     location = db.Column(db.String(100))
 
-
 class OAuth(OAuthConsumerMixin, db.Model):
+    __tablename__ = 'oauth'
     provider_user_id = db.Column(db.String(256), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
     user = db.relationship(User)
@@ -34,3 +40,5 @@ def update_teacher_location(teacher, location_name):
     teacher.location = location_name
     db.session.commit()
     
+def get_teacher_locations(teacher):
+    pass
