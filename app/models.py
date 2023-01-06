@@ -45,5 +45,5 @@ def get_teacher_locations(teacher):
     return Location.query.filter(Location.user_id == teacher.id).all()
 
 def lookup_location_by_id(location_id):
-    location = Location.query.filter(Location.id == location_id).one()
+    location = Location.query.filter(Location.id == location_id).one_or_none()
     return location.location
