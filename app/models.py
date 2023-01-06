@@ -49,3 +49,11 @@ def lookup_location_by_id(location_id):
     if location is None:
         return None
     return location.location
+
+def register_location(teacher, location):
+    teacher_location = Location()
+    teacher_location.user_id = teacher.id
+    teacher_location.location = location
+    db.session.add(teacher_location)
+    db.session.commit()
+
