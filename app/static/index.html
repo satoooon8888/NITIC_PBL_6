@@ -23,9 +23,11 @@
       users.forEach(user => {
         //ユーザーごとの div 要素の HTML
         const userDiv =
-          `<div class="user">
-            <h3 class="email">${user.email}</h3>
-          </div>`;
+          `<section>
+            <div class="user">
+              <h3 class="email">${user.email}</h3>
+            </div>
+          </section>`;
         //ユーザーごとの div 要素の HTML を変数 html に追加
         html += userDiv;
       });

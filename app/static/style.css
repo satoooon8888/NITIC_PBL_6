@@ -186,3 +186,11 @@ nav ul li.current a,
 nav ul li a:hover{
     color:#fff;
 }
+
+section{
+    padding:30px;
+}
+
+section:nth-child(2n){
+    background:#f3f3f3;
+}
