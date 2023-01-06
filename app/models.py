@@ -40,6 +40,10 @@ def get_teachers():
 def update_teacher_location(teacher, location_name):
     teacher.location = location_name
     db.session.commit()
-    
+
 def get_teacher_locations(teacher):
     return Location.query.filter(Location.user_id == teacher.id).all()
+
+def lookup_location_by_id(location_id):
+    location = Location.query.filter(Location.id == location_id).one()
+    return location.location
