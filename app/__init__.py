@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, flash, render_template, jsonify, request
 from flask_login import login_required, logout_user, current_user
 from .config import Config
-from .models import db, login_manager, get_teachers, update_teacher_location, get_teacher_locations
+from .models import db, login_manager, get_teachers, update_teacher_location, get_teacher_locations, lookup_location_by_id
 from .oauth import blueprint
 from .cli import create_db
 
@@ -36,7 +36,7 @@ def handle_teacher():
         teacher_dicts.append({
             "id": teacher.id, 
             "email": teacher.email, 
-            "location_id": teacher.location_id
+            "location": lookup_location_by_id(teacher.location_id)
         })
     return jsonify(teacher_dicts)
 
