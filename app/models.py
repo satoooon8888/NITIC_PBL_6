@@ -46,4 +46,6 @@ def get_teacher_locations(teacher):
 
 def lookup_location_by_id(location_id):
     location = Location.query.filter(Location.id == location_id).one_or_none()
+    if location is None:
+        return None
     return location.location
