@@ -34,9 +34,10 @@ def handle_teacher():
     teacher_dicts = []
     for teacher in teachers:
         teacher_dicts.append({
-            "id": teacher.id, 
-            "email": teacher.email, 
-            "location_id": teacher.location_id
+            "id": teacher.id,
+            "email": teacher.email,
+            "location_id": teacher.location_id,
+            "name": teacher.name
         })
     return jsonify(teacher_dicts)
 
