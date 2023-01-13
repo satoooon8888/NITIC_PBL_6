@@ -41,6 +41,7 @@
     .catch((error) => {
       console.warn(error);
     });
+
     fetch("/api/teacher/location")
     .then((response) => {
     //ステータスが ok であればレスポンスを JSON として解析
@@ -51,24 +52,25 @@
       throw new Error(`リクエスト失敗:${response.status} ${response.statusText}`);
     }
     })
-    .then((users) => {
+    .then((locations) => {
       //出力する HTML 文字列を入れる変数
       let html = '';
       //ユーザーごとの JSON データを処理（users は JSON の配列）
-      users.forEach(user => {
+      locations.forEach(location => {
         //ユーザーごとの div 要素の HTML
-        const userDiv =
+        const locationDiv =
           `<div>
-            <input type="radio" name="title">
-            <label>${user.location}</label>
+            <input type="radio" name="location_id" value="${location.id}">
+            <label>${location.location}</label>
           </div>`;
         //ユーザーごとの div 要素の HTML を変数 html に追加
-        html += userDiv;
+        html += locationDiv;
       });
       //出力先の要素を取得
       const container = document.querySelector('#select_loc');
       //出力先の要素に作成した html を挿入
       container.innerHTML = html;
+      document.getElementById("teacher_form").style.display="block"
     })
     .catch((error) => {
       console.warn(error);  
@@ -84,16 +86,10 @@
     </ul>
   </nav>
 </header>
-<div class="form-wrapper">
+<div class="form-wrapper" id="teacher_form">
   <h1>状態の入力</h1>
-  <form action="/api/teacher/current_location" method="POST">
-    <group id="select_loc" class="inline-radio">
-      <div><input type="radio" name="title"><label>状態1</label></div>
-      <div><input type="radio" name="title"><label>状態2</label></div>
-      <div><input type="radio" name="title"><label>状態3</label></div>
-      <div><input type="radio" name="title"><label>状態4</label></div>
-      <div><input type="radio" name="title"><label>状態5</label></div>
-    </group>
+  <form action="/api/teacher/current_location" method="POST" id="select">
+    <group id="select_loc" class="inline-radio"></group>
   </form>
   <h5>その他</h3>
   <form action="/api/teacher/location" method="POST">
@@ -105,7 +101,7 @@
     </div>
   </form>
   <div class="button-panel">
-    <input type="submit" class="button" value="select">
+    <input type="submit" class="button" value="select" form="select">
   </div>
 </div>
 <div id="teacher_location"></div>

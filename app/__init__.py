@@ -45,13 +45,13 @@ def handle_teacher():
 @login_required
 def update_location():
     update_teacher_location(current_user, int(request.form["location_id"]))
-    return "ok"
+    return redirect(url_for("index"))
 
 @app.route("/api/teacher/location", methods=["POST"])
 @login_required
 def register_loc():
     register_location(current_user, request.form["location"])
-    return "ok"
+    return redirect(url_for("index"))
 
 @app.route("/api/teacher/location")
 @login_required
