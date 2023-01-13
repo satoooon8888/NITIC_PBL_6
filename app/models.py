@@ -11,6 +11,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(256), unique=True)
     location_id = db.Column(db.Integer,db.ForeignKey('location.id'))
+    name = db.Column(db.String(100))
 
 class Location(db.Model):
     __tablename__ = 'location'
@@ -37,8 +38,8 @@ def load_user(user_id):
 def get_teachers():
     return User.query.all()
 
-def update_teacher_location(teacher, location_name):
-    teacher.location = location_name
+def update_teacher_location(teacher, location_id):
+    teacher.location_id = location_id
     db.session.commit()
 
 def get_teacher_locations(teacher):
@@ -49,3 +50,11 @@ def lookup_location_by_id(location_id):
     if location is None:
         return None
     return location.location
+
+def register_location(teacher, location):
+    teacher_location = Location()
+    teacher_location.user_id = teacher.id
+    teacher_location.location = location
+    db.session.add(teacher_location)
+    db.session.commit()
+
