@@ -36,7 +36,7 @@ def google_logged_in(blueprint, token):
     except NoResultFound:
         oauth = OAuth(provider=blueprint.name, provider_user_id=user_id, token=token)
 
-    print(oauth)
+    # print(oauth)
 
     if oauth.user:
         login_user(oauth.user)
@@ -44,7 +44,8 @@ def google_logged_in(blueprint, token):
 
     else:
         # Create a new local user account for this user
-        user = User(email=info["email"], location_id="")
+        name = f"{info['family_name']} {info['given_name']}"
+        user = User(name=name, email=info["email"], location_id=None)
         # Associate the new local user account with the OAuth token
         oauth.user = user
         # Save and commit our database models
