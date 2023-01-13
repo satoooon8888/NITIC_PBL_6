@@ -53,8 +53,6 @@ form {
     font-size: 0.8em;
     letter-spacing: 0.05em;
     text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
     width:20%;
 }
 
@@ -64,7 +62,6 @@ form {
 .cp_iptxt input[type='text'] {
 	width: 100%;
 	padding: 0.3em;
-	transition: 0.3s;
 	letter-spacing: 1px;
 	color: #aaaaaa;
 	border: 1px solid #ffffff;
@@ -171,7 +168,6 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
     border-right: 1px solid #b6b6b6;
 }
 

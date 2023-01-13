@@ -36,7 +36,7 @@ def handle_teacher():
         teacher_dicts.append({
             "id": teacher.id, 
             "email": teacher.email, 
-            "location": lookup_location_by_id(teacher.location_id)
+            "location": lookup_location_by_id(teacher.location_id),
             "name": teacher.name
         })
     return jsonify(teacher_dicts)
