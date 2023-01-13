@@ -53,7 +53,7 @@
 </header>
 <div class="form-wrapper">
   <h1>状態の入力</h1>
-  <form>
+  <form action="/api/teacher/current_location" method="POST">
     <group class="inline-radio">
       <div><input type="radio" name="title"><label>状態1</label></div>
       <div><input type="radio" name="title"><label>状態2</label></div>
@@ -61,8 +61,17 @@
       <div><input type="radio" name="title"><label>状態4</label></div>
       <div><input type="radio" name="title"><label>状態5</label></div>
     </group>
+    <h5>その他</h3>
+      <form action="/api/teacher/location" method="POST">
+        <div class="cp_iptxt">
+          <label class="ef">
+            <input type="text" placeholder="場所">
+            <input type="submit" class="button sub" value="add">
+          </label>
+        </div>
+      </form>
     <div class="button-panel">
-      <input type="submit" class="button" title="Sign Up" value="register" onclick="location.href='teacher.html'">
+      <input type="submit" class="button" value="select">
     </div>
   </form>
 </div>
