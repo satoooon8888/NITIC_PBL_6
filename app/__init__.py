@@ -59,7 +59,7 @@ def get_location():
     location_dicts = []
     for loc in locations:
         location_dicts.append({
-            "user_id": loc.user_id,
+            "id": loc.id,
             "location": loc.location
         })
     return jsonify(location_dicts)

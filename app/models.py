@@ -37,8 +37,8 @@ def load_user(user_id):
 def get_teachers():
     return User.query.all()
 
-def update_teacher_location(teacher, location_name):
-    teacher.location = location_name
+def update_teacher_location(teacher, location_id):
+    teacher.location_id = location_id
     db.session.commit()
 
 def get_teacher_locations(teacher):
