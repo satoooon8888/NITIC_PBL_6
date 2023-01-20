@@ -38,9 +38,23 @@ def load_user(user_id):
 def get_teachers():
     return User.query.all()
 
-def update_teacher_location(teacher, location_name):
-    teacher.location = location_name
+def update_teacher_location(teacher, location_id):
+    teacher.location_id = location_id
     db.session.commit()
-    
+
 def get_teacher_locations(teacher):
     return Location.query.filter(Location.user_id == teacher.id).all()
+
+def lookup_location_by_id(location_id):
+    location = Location.query.filter(Location.id == location_id).one_or_none()
+    if location is None:
+        return None
+    return location.location
+
+def register_location(teacher, location):
+    teacher_location = Location()
+    teacher_location.user_id = teacher.id
+    teacher_location.location = location
+    db.session.add(teacher_location)
+    db.session.commit()
+

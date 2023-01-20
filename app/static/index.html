@@ -25,6 +25,7 @@
         const userDiv =
           `<section>
             <div class="user">
+              <h3 class="location">${user.location}</h3>
               <h3 class="name">${user.name}</h3>
               <h3 class="email">${user.email}</h3>
             </div>
@@ -40,6 +41,40 @@
     .catch((error) => {
       console.warn(error);
     });
+
+    fetch("/api/teacher/location")
+    .then((response) => {
+    //ステータスが ok であればレスポンスを JSON として解析
+    if(response.ok) {
+      return response.json();
+    } else {
+      //ステータスが ok でなければエラーにする
+      throw new Error(`リクエスト失敗:${response.status} ${response.statusText}`);
+    }
+    })
+    .then((locations) => {
+      //出力する HTML 文字列を入れる変数
+      let html = '';
+      //ユーザーごとの JSON データを処理（users は JSON の配列）
+      locations.forEach(location => {
+        //ユーザーごとの div 要素の HTML
+        const locationDiv =
+          `<div>
+            <input type="radio" name="location_id" value="${location.id}">
+            <label>${location.location}</label>
+          </div>`;
+        //ユーザーごとの div 要素の HTML を変数 html に追加
+        html += locationDiv;
+      });
+      //出力先の要素を取得
+      const container = document.querySelector('#select_loc');
+      //出力先の要素に作成した html を挿入
+      container.innerHTML = html;
+      document.getElementById("teacher_form").style.display="block"
+    })
+    .catch((error) => {
+      console.warn(error);  
+    });
   </script>
 </head>
 <body>
@@ -51,20 +86,23 @@
     </ul>
   </nav>
 </header>
-<div class="form-wrapper">
+<div class="form-wrapper" id="teacher_form">
   <h1>状態の入力</h1>
-  <form>
-    <group class="inline-radio">
-      <div><input type="radio" name="title"><label>状態1</label></div>
-      <div><input type="radio" name="title"><label>状態2</label></div>
-      <div><input type="radio" name="title"><label>状態3</label></div>
-      <div><input type="radio" name="title"><label>状態4</label></div>
-      <div><input type="radio" name="title"><label>状態5</label></div>
-    </group>
-    <div class="button-panel">
-      <input type="submit" class="button" title="Sign Up" value="register" onclick="location.href='teacher.html'">
+  <form action="/api/teacher/current_location" method="POST" id="select">
+    <group id="select_loc" class="inline-radio"></group>
+  </form>
+  <h5>その他</h3>
+  <form action="/api/teacher/location" method="POST">
+    <div class="cp_iptxt">
+      <label class="ef">
+        <input type="text" placeholder="場所" name="location">
+        <input type="submit" class="button" value="add">
+      </label>
     </div>
   </form>
+  <div class="button-panel">
+    <input type="submit" class="button" value="select" form="select">
+  </div>
 </div>
 <div id="teacher_location"></div>
 
