@@ -21,6 +21,12 @@ login_manager.init_app(app)
 def index():
     return redirect("/index.html")
 
+@app.route("/check")
+def check():
+    if current_user.is_authenticated:
+        return redirect("/index.html")
+    return redirect("/login_error.html")
+
 @app.route("/api/logout")
 @login_required
 def logout():
